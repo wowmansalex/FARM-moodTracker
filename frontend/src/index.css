@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beth+Ellen&display=swap');
+
+:root {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	--general-dark-color: #94d9b4;
+	--general-dark-color-2: #2fdf83;
+	--general-dark-color-3: #25451e;
+	--general-dark-color-4: #ffffff;
+	--negative-color: rgb(210, 89, 80);
+	--positive-color: rgb(58, 218, 58);
+}
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: var(--general-dark-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--general-dark-color-3);
+}
+
+p {
+	font-family: 'Inter Tight', sans-serif;
+	color: var(--general-dark-color-3);
+}
+
+ul {
+	list-style: none;
+}
+
+.btn {
+	outline: none;
+}
+
+.btn-light {
+	text-decoration: none;
+	font-family: Inter, sans-serif;
+	font-weight: 0;
+	font-size: 14px;
+	color: #fff;
+	background-color: var(--general-dark-color-3);
+	padding: 10px 25px;
+	border: 2px solid var(--general-dark-color-3);
+	border-radius: 10px;
+}
+
+.btn-light-profile {
+	margin-right: 100px;
+	text-decoration: none;
+	font-family: Inter, sans-serif;
+	font-weight: 0;
+	font-size: 14px;
+	color: #fff;
+	background-color: var(--general-dark-color-3);
+	padding: 10px 25px;
+	border: 2px solid var(--general-dark-color-3);
+	border-radius: 10px;
+}
+
+.btn-light:hover {
+	cursor: pointer;
+	text-decoration: none;
+	padding: 10px 25px;
+	background-color: #fff;
+	color: var(--general-dark-color-2);
+	border: solid 2px var(--general-dark-color-2);
+}
+
+.container {
+	position: relative;
+	left: 70px;
+	width: 1050px !important;
+}
+
+.container-profile {
+	width: 500px !important;
+}
+
+.emoji {
+	cursor: pointer;
+	height: 40px;
+	width: 40px;
+	border-radius: 60px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #25451e;
+}
+
+.entry-icon {
+	cursor: pointer;
+	display: flex;
+	height: 40px;
+	width: 40px;
+	border-radius: 60px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #25451e;
+	background-color: #fff;
+	align-items: center;
+	justify-content: center;
+}
+
+.entry-image {
+	height: 25px;
+	width: 25px;
+	filter: grayscale(100%);
+}
+.entry-image-selected {
+	height: 25px;
+	width: 25px;
+}
+
+.entry-container {
+	width: 40%;
+	background-color: var(--general-dark-color-4);
+	border-radius: 15px;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+
+.entry-title {
+	font-size: 15px;
+}
+
+.general {
+	font-family: Inter, Arial;
+	background-color: var(--general-dark-color);
+}
+
+.header {
+	height: 80px;
+	margin-bottom: 20px;
+}
+
+.header-brand {
+	font-family: 'Beth Ellen';
+	font-weight: bold;
+}
+
+.header-title {
+	font-family: 'Inter Tight', sans-serif;
+	margin-left: 1rem;
+	color: var(--general-dark-color-3);
+}
+
+.header-title:hover {
+	text-decoration: none;
+}
+
+.header-item {
+	font-family: 'Inter Tight', sans-serif;
+	text-decoration: none !important;
+	color: var(--general-dark-color-3) !important;
+}
+
+.header-item:hover {
+	color: var(--general-dark-color-3) !important;
+}
+
+.image {
+	width: 300px;
+	margin-top: 40px;
+	background-image: linear-gradient(to right, rgba(192, 176, 176, 0));
+	background-blend-mode: overlay;
+	background-size: contain;
+}
+
+.link {
+	text-decoration: none;
+	color: black;
+}
+
+.link-light {
+	text-decoration: none;
+	color: white;
+}
+
+.login-form {
+	width: 500px;
+}
+
+.navtab {
+	width: 70%;
+	background-color: var(--general-dark-color-2) !important;
+	color: var(--general-dark-color-3);
+}
+
+.negative {
+	color: var(--negative-color) !important;
+}
+
+.positive {
+	color: var(--positive-color) !important;
+}
+
+.profile-picture {
+	width: 200px;
+}
+
+.sidenavbar {
+	height: 100vh;
+	width: 7%;
+	position: fixed;
+	top: 60px;
+	left: 0;
+	background-color: var(--general-dark-color-2);
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+
+.sidenavbar-item {
+	display: flex;
+	margin-top: 10px;
+	color: #fff;
+}
+
+.title {
+	color: var(--general-dark-color-2);
+	text-align: center;
+	font-size: 30px;
+}
+
+.upload-btn {
+	margin-left: 100px;
+}
