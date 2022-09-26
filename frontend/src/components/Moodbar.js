@@ -1,47 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 
 const Moodbar = () => {
-	let count = 0;
-	if (localStorage.getItem('entries') !== null) {
-		const entries = JSON.parse(localStorage.getItem('entries'));
+	const [mood, setMood] = useState('');
+	const prevMood = useRef();
 
+	let score = 0;
+	const entries = JSON.parse(localStorage.getItem('entries'));
+
+	if (entries !== null) {
+		let count = entries.length;
 		entries.map(item => {
 			if (item.emoji == 'Angry') {
-				count -= -3;
+				score -= 3;
 			} else if (item.emoji == 'Confused') {
-				count -= -2;
+				score -= 2;
 			} else if (item.emoji == 'Meh') {
-				count += 0;
+				score += 0;
 			} else if (item.emoji == 'Smiling') {
-				count += 1;
+				score += 1;
 			} else if (item.emoji == 'Excited') {
-				count += 2;
+				score += 2;
 			}
 		});
 
-		console.log(count);
+		score = score / count;
+
+		console.log(score);
 	}
 
-	useEffect(() => {
-		if (count < -2) {
-			const setArrow = document.getElementById('angry');
-			setArrow.className = 'active';
-		} else if (count < -1 && count > -2) {
-			const setArrow = document.getElementById('confused');
-			setArrow.className = 'active';
-		} else if (count < 0 && count >= -1) {
-			const setArrow = document.getElementById('meh');
-			setArrow.className = 'active';
-		} else if (count >= 0 && count <= 2) {
-			const setArrow = document.getElementById('smiling');
-			setArrow.className = 'active';
-		} else if (count > 3) {
-			const setArrow = document.getElementById('excited');
-			setArrow.className = 'active';
+	const toggleClass = id => {
+		const arrow = document.getElementById(id);
+		arrow.className = 'active';
+
+		if (mood) {
+			const prevArrow = document.createElement(prevMood.current);
+			prevArrow.className = 'not-active';
 		}
-	}, [count]);
+	};
+
+	useEffect(() => {
+		prevMood.current = mood;
+
+		console.log(prevMood.current);
+
+		if (score < 0) {
+			setMood('angry');
+			toggleClass('angry');
+		} else if (score > 0 && score < 0.5) {
+			setMood('confused');
+			toggleClass('confused');
+		} else if (score >= 0.5 && score <= 1) {
+			setMood('meh');
+			toggleClass('meh');
+		} else if (score >= 1 && score <= 1.5) {
+			setMood('smiling');
+			toggleClass('smiling');
+		} else if (score > 1.5) {
+			setMood('excited');
+			toggleClass('excited');
+		}
+	}, [mood]);
 
 	return (
 		<div className='my-2 mx-2'>
@@ -52,7 +72,7 @@ const Moodbar = () => {
 						<div className='moodbar-item angry'>1</div>
 						<div
 							id='angry'
-							className='not-active'>
+							className={'not-active'}>
 							<FontAwesomeIcon icon={faCaretUp} />
 						</div>
 					</div>

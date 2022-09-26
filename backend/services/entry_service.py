@@ -17,7 +17,7 @@ class EntryService:
 
   @staticmethod
   async def list_entries(user: User) -> List[EntryOut]:
-    entries = await Entry.find(Entry.user.id == user.id).to_list()
+    entries = await Entry.find(Entry.user.id == user.id).sort('date_created').to_list()
     return entries
 
   @staticmethod

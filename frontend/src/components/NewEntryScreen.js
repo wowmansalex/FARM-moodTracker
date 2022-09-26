@@ -13,11 +13,12 @@ import {
 	thoughtOptions,
 	physicalOptions,
 } from '../constants/selectionOptions';
+import { useNavigate } from 'react-router-dom';
 
 const NewEntryScreen = () => {
 	const dispatch = useDispatch();
 	const message = useSelector(state => state.entries.message);
-
+	const navigate = useNavigate();
 	const [emoji, setEmoji] = useState('');
 	const [activity, setActivity] = useState('');
 	const [thought, setThought] = useState('');
@@ -86,6 +87,7 @@ const NewEntryScreen = () => {
 		form['physical'] = physical;
 		console.log(form);
 		dispatch(createEntry(form));
+		navigate('/');
 	};
 
 	useEffect(() => {
