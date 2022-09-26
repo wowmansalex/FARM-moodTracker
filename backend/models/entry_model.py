@@ -11,10 +11,10 @@ class Entry(Document):
   date_created: datetime = Field(default_factory=datetime.now)
   entry_id: UUID = Field(default_factory=uuid4)
   user: Link[User]
-  emotion: List[dict] | List[str]
-  activity: List[dict] | List[str]
-  foodDrinks: List[dict] | List[str]
   emoji: str
+  activity: List[str]
+  thought: List[str]
+  physical: List[str]
 
   def __refr__(self) -> str:
       return f"<User {self.emoji}>"

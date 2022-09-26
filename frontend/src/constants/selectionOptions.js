@@ -1,15 +1,29 @@
 export const emotionOptions = [
-	{ value: 'excited', label: 'Excited' },
-	{ value: 'relaxed', label: 'Relaxed' },
-	{ value: 'proud', label: 'Proud' },
-	{ value: 'hopeful', label: 'Hopeful' },
-	{ value: 'happy', label: 'Happy' },
-	{ value: 'enthusiastic', label: 'Enthusiastic' },
-	{ value: 'refreshed', label: 'Refreshed' },
-	{ value: 'lonely', label: 'Lonely' },
-	{ value: 'anxious', label: 'Anxious' },
-	{ value: 'sad', label: 'Sad' },
-	{ value: 'angry', label: 'Angry' },
+	{
+		id: 'Angry',
+		name: 'emoji',
+		url: 'https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/frown-emoji.png',
+	},
+	{
+		id: 'Confused',
+		name: 'emoji',
+		url: 'https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/sad-emoji.png',
+	},
+	{
+		id: 'Neutral',
+		name: 'emoji',
+		url: 'https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/meh-emoji.png',
+	},
+	{
+		id: 'Smiling',
+		name: 'emoji',
+		url: 'https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/smile-emoji.png',
+	},
+	{
+		id: 'Excited',
+		name: 'emoji',
+		url: 'https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/excited-emoji.png',
+	},
 ];
 
 export const activityOptions = [

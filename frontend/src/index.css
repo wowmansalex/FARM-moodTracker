@@ -79,12 +79,24 @@ ul {
 
 .container {
 	position: relative;
-	left: 70px;
+	left: 0px;
 	width: 1050px !important;
 }
 
 .container-profile {
 	width: 500px !important;
+}
+
+.data-container {
+	border-radius: 15px;
+	height: 100%;
+	width: 80%;
+	background-color: var(--general-dark-color-4);
+}
+
+.data-item {
+	width: 100%;
+	height: 100%;
 }
 
 .emoji {
@@ -136,6 +148,12 @@ ul {
 .general {
 	font-family: Inter, Arial;
 	background-color: var(--general-dark-color);
+}
+
+.graph {
+	width: 70%;
+	height: 100%;
+	margin: 5px;
 }
 
 .header {
@@ -190,6 +208,46 @@ ul {
 	width: 500px;
 }
 
+.moodbar {
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+}
+
+.moodbar-item {
+	height: 100%;
+}
+
+.angry {
+	background-color: red;
+	color: red;
+	border-radius: 25px 0 0 25px;
+}
+
+.confused {
+	background-color: orange;
+	color: orange;
+}
+
+.meh {
+	background-color: rgb(217, 217, 217);
+	color: rgb(217, 217, 217);
+}
+
+.smiling {
+	background-color: darkgreen;
+	color: darkgreen;
+}
+
+.excited {
+	background-color: greenyellow;
+	color: greenyellow;
+	border-radius: 0px 25px 25px 0px;
+}
+
 .navtab {
 	width: 70%;
 	background-color: var(--general-dark-color-2) !important;
@@ -198,6 +256,18 @@ ul {
 
 .negative {
 	color: var(--negative-color) !important;
+}
+
+.not-active {
+	filter: opacity(0%);
+	display: flex;
+	justify-content: center;
+}
+
+.active {
+	filter: opacity(100%);
+	display: flex;
+	justify-content: center;
 }
 
 .positive {

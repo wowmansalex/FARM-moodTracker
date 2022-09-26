@@ -25,6 +25,20 @@ export const createEntry = createAsyncThunk(
 	}
 );
 
+export const fetchEntries = createAsyncThunk(
+	'entry/fetchEntries',
+	async (_, { rejectWithValue }) => {
+		try {
+			const response = await api.get(ENTRY + 'list', config);
+			localStorage.setItem('entries', JSON.stringify(response.data));
+			return response.data;
+		} catch (error) {
+			console.log('Error:' + error.response.data);
+			return rejectWithValue(error.response.data);
+		}
+	}
+);
+
 export const getCurrentMood = createAsyncThunk(
 	'entry/getCurrentMood',
 	async (_, { rejectWithValue }) => {
@@ -41,6 +55,7 @@ export const getCurrentMood = createAsyncThunk(
 const initialState = {
 	currentMood: null,
 	latestMood: null,
+	entries: null,
 	isFetching: false,
 	isSuccess: false,
 	errorMessage: null,
@@ -63,6 +78,16 @@ export const entrySlice = createSlice({
 		[createEntry.rejected]: (state, { payload }) => {
 			state.errorMessage = payload;
 		},
+		[fetchEntries.pending]: state => {
+			state.isFetching = true;
+		},
+		[fetchEntries.fulfilled]: (state, { payload }) => {
+			state.isFetching = false;
+			state.isSuccess = true;
+			state.entries = payload;
+			state.message = 'Entry fetched successfully';
+		},
+
 		[getCurrentMood.pending]: state => {
 			state.isFetching = true;
 		},

@@ -136,6 +136,7 @@ export const authSlice = createSlice({
 		logout: state => {
 			localStorage.removeItem('access token');
 			localStorage.removeItem('user_details');
+			localStorage.removeItem('entries');
 			state.message = null;
 			state.isFetching = false;
 			state.isAuthenticated = false;

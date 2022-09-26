@@ -9,6 +9,7 @@ import LoginScreen from './screens/LogInScreen';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserDetails, logout } from './features/auth/authSlice';
+import { fetchEntries } from './features/entry/entrySlice';
 
 import { validateToken } from './constants/validateToken';
 import { useNavigate } from 'react-router-dom';
@@ -45,6 +46,7 @@ function App() {
 		AuthVerify();
 
 		dispatch(getUserDetails());
+		dispatch(fetchEntries());
 	}, []);
 
 	return (

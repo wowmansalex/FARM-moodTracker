@@ -8,6 +8,7 @@ import EntrySelection from './EntrySelection';
 import toast, { Toaster } from 'react-hot-toast';
 
 import {
+	emotionOptions,
 	activityOptions,
 	thoughtOptions,
 	physicalOptions,
@@ -16,9 +17,8 @@ import {
 const NewEntryScreen = () => {
 	const dispatch = useDispatch();
 	const message = useSelector(state => state.entries.message);
-	const [entryInput, setEntryInput] = useState({
-		emoji: null,
-	});
+
+	const [emoji, setEmoji] = useState('');
 	const [activity, setActivity] = useState('');
 	const [thought, setThought] = useState('');
 	const [physical, setPhysical] = useState('');
@@ -30,6 +30,9 @@ const NewEntryScreen = () => {
 			if (event.target.className == 'entry-image') {
 				setSelected(true);
 				event.target.className = 'entry-image-selected';
+				if (event.target.name == 'emoji') {
+					setEmoji(event.target.id);
+				}
 				if (event.target.name == 'activity') {
 					if (!activity.includes(event.target.id)) {
 						setActivity(prev => [...prev, event.target.id]);
@@ -69,30 +72,19 @@ const NewEntryScreen = () => {
 		}
 	};
 
-	const handleChange = event => {
-		if (
-			event.target.id === 'angry' ||
-			event.target.id === 'confused' ||
-			event.target.id === 'neutral' ||
-			event.target.id === 'smiling' ||
-			event.target.id === 'excited'
-		) {
-			setEntryInput({ ...entryInput, [event.target.name]: event.target.id });
-		}
-	};
-
 	const handleSelected = event => {
-		console.log(activity, thought, physical);
+		console.log(emoji, activity, thought, physical);
 	};
 
 	const handleSubmit = event => {
 		event.preventDefault();
 
-		let form = {
-			...entryInput,
-			...activity,
-		};
-
+		let form = {};
+		form['emoji'] = emoji;
+		form['activity'] = activity;
+		form['thought'] = thought;
+		form['physical'] = physical;
+		console.log(form);
 		dispatch(createEntry(form));
 	};
 
@@ -113,41 +105,20 @@ const NewEntryScreen = () => {
 						<p>How are you feeling?</p>
 					</div>
 					<div className='d-flex flex-row justify-content-around'>
-						<img
-							name='emoji'
-							id='angry'
-							onClick={handleChange}
-							className='emoji'
-							src='https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/frown-emoji.png'
-						/>
-						<img
-							name='emoji'
-							id='confused'
-							onClick={handleChange}
-							className='emoji'
-							src='https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/sad-emoji.png'
-						/>
-						<img
-							name='emoji'
-							id='neutral'
-							onClick={handleChange}
-							className='emoji'
-							src='https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/meh-emoji.png'
-						/>
-						<img
-							name='emoji'
-							id='smiling'
-							onClick={handleChange}
-							className='emoji'
-							src='https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/smile-emoji.png'
-						/>
-						<img
-							name='emoji'
-							id='excited'
-							onClick={handleChange}
-							className='emoji'
-							src='https://mood-tracker-icons.s3.eu-central-1.amazonaws.com/excited-emoji.png'
-						/>
+						{emotionOptions.map((physical, index) => {
+							return (
+								<EntrySelection
+									clss={'entry-image'}
+									handleSelected={handleSelected}
+									toggleSelected={toggleSelected}
+									index={index}
+									key={index}
+									name={physical.name}
+									id={physical.id}
+									url={physical.url}
+								/>
+							);
+						})}
 					</div>
 					<div className='mx-auto my-3'>
 						<p>What did you do?</p>

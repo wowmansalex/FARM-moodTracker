@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 import NavigateModal from '../components/NavigateModal';
-import NewEntryScreen from '../components/NewEntryScreen';
+import DayToDayGraph from '../components/DayToDayGraph';
+import Moodbar from '../components/Moodbar';
 
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { getCurrentMood } from '../features/entry/entrySlice';
+import MoodvsActivity from '../components/MoodvsActivity';
+import MoodvsThought from '../components/MoodvsThought';
 
 const EntryScreen = () => {
 	const [show, setShow] = useState(true);
@@ -31,14 +34,18 @@ const EntryScreen = () => {
 			{errorMessage === null ? (
 				<div>
 					<Toaster />
-					<div className='container'>
-						<div className='d-flex flex-column '>
-							<div className='mx-auto'></div>
-							<i className='icon icon-brain' />
-							<div className='mx-auto'></div>
+					<div className='row data-container mx-auto'>
+						<div className='col-6'>
+							<div className=''>
+								<DayToDayGraph className='graph' />
+							</div>
+							<div className=''>
+								<Moodbar />
+							</div>
 						</div>
-						<div className='d-flex flex-column '>
-							<div className='mx-auto my-4'></div>
+						<div className='col-6'>
+							<MoodvsActivity />
+							<MoodvsThought />
 						</div>
 					</div>
 				</div>
